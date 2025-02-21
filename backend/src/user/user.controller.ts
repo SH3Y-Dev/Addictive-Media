@@ -46,7 +46,6 @@ export class UserController {
       secure: true,
       sameSite: 'none',
     });
-
     return res.json({ message: 'Login successful' });
   }
 
