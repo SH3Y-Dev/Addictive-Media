@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function Login() {
   const router = useRouter();
@@ -93,6 +94,14 @@ export default function Login() {
       color: 'red',
       marginBottom: '1rem',
     },
+    link: {
+      marginTop: '10px',
+      textAlign: 'center',
+    },
+    linkText: {
+      color: '#007bff',
+      textDecoration: 'none',
+    },
   };
   return (
     <div style={styles.container}>
@@ -119,8 +128,13 @@ export default function Login() {
         {error && <p style={styles.error}>{error}</p>}
         <button type="submit" style={styles.button}>Login</button>
       </form>
+      {/* Link to the register page */}
+      <p style={styles.link}>
+        Don't have an account? <Link href="/register" style={styles.linkText}>Register here</Link>
+      </p>
     </div>
   );
+  
 }
 
 
