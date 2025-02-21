@@ -96,7 +96,7 @@ export default function Login() {
     },
     link: {
       marginTop: '10px',
-      textAlign: 'center',
+      textAlign: 'center' as 'center',
     },
     linkText: {
       color: '#007bff',
