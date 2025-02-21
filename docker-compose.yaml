@@ -1,0 +1,47 @@
+version: '3.8'
+services:
+  service-backend:
+    container_name: backend
+    image: testing_backend:latest
+    build:
+      context: .
+      dockerfile: backend/docker/Dockerfile
+      target: development
+      args:
+        NODE_ENV: dev
+    ports:
+      - 3000:3000
+    env_file:
+        - ./backend/.env/backend.env
+    networks:
+      dev_network:
+        ipv4_address: 30.9.1.200
+    volumes:
+      - ./backend/src:/home/dev/backend/src
+      - ./backend/node_modules:/home/dev/backend/node_modules/
+    command: npm run start:debug
+
+  service-frontend:
+    container_name: frontend
+    image: testing_frontend:latest
+    build:
+      context: .
+      dockerfile: frontend/docker/Dockerfile
+    ports:
+      - 3001:3001
+    env_file:
+        - ./frontend/.env/frontend.env
+    networks:
+      dev_network:
+        ipv4_address: 30.9.1.202
+    volumes:
+      - ./frontend:/home/dev/frontend
+    command: npm run dev
+
+networks:
+  dev_network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 30.9.0.0/16
