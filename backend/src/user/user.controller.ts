@@ -45,6 +45,7 @@ export class UserController {
       maxAge: 60 * 60 * 1000,
       secure: true,
       sameSite: 'none',
+      domain: process.env.BASE_URL,
     });
     return res.json({ message: 'Login successful' });
   }
@@ -52,14 +53,12 @@ export class UserController {
   @UseGuards(AuthGuard('jwt'))
   @Get('profile')
   async getUserProfile(@Req() req) {
-    console.log('Authorization Header:', req.headers.authorization);
     const userId = req.user.userId;
-    console.log(req.user.userId);
 
     const user = await this.userService.findById(userId);
     const videos = await this.videoService.findByUserId(userId);
 
-    const baseUrl = 'http://localhost:3000';
+    const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
 
     return {
       firstName: user.firstName,
@@ -103,8 +102,6 @@ export class UserController {
     @UploadedFile() file: Express.Multer.File,
   ) {
     const userId = req.user.userId;
-    console.log('userId', userId);
-    console.log('sd', body);
 
     let dpPath = null;
 
