@@ -45,7 +45,6 @@ export class UserController {
       maxAge: 60 * 60 * 1000,
       secure: true,
       sameSite: 'none',
-      domain: process.env.BASE_URL,
     });
     return res.json({ message: 'Login successful' });
   }
