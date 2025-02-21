@@ -137,13 +137,13 @@ const styles = {
     color:'#000'
   },
   header: {
-    textAlign: 'center',
+    textAlign: 'center' as 'center',
     marginBottom: '20px',
     color:'#000',
   },
   form: {
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'column' as 'column',
     color:'#000'
   },
   formGroup: {

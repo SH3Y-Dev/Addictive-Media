@@ -22,7 +22,6 @@ export default function Login() {
     setError('');
 
     try {
-      console.log(process.env.NEXT_PUBLIC_BACKEND_URL);
       const response = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + '/user/login', { 
         method: 'POST',
         headers: {
@@ -45,6 +44,51 @@ export default function Login() {
     }
   };
 
+  const styles = {
+    container: {
+      display: 'flex',
+      flexDirection: 'column' as 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: '100vh',
+      backgroundColor: '#f0f0f0',
+    },
+    title: {
+      fontSize: '2rem',
+      marginBottom: '1rem',
+      color: '#333',
+    },
+    form: {
+      display: 'flex',
+      flexDirection: 'column' as 'column',
+      width: '300px',
+      padding: '2rem',
+      backgroundColor: '#000',
+      boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
+      borderRadius: '8px',
+    },
+    input: {
+      marginBottom: '1rem',
+      padding: '0.8rem',
+      fontSize: '1rem',
+      border: '1px solid #ccc',
+      borderRadius: '4px',
+      color: '#000'
+    },
+    button: {
+      padding: '0.8rem',
+      fontSize: '1rem',
+      color: '#fff',
+      backgroundColor: '#0070f3',
+      border: 'none',
+      borderRadius: '4px',
+      cursor: 'pointer',
+    },
+    error: {
+      color: 'red',
+      marginBottom: '1rem',
+    },
+  };
   return (
     <div style={styles.container}>
       <h1 style={styles.title}>Login</h1>
@@ -74,48 +118,4 @@ export default function Login() {
   );
 }
 
-const styles = {
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '100vh',
-    backgroundColor: '#f0f0f0',
-  },
-  title: {
-    fontSize: '2rem',
-    marginBottom: '1rem',
-    color: '#333',
-  },
-  form: {
-    display: 'flex',
-    flexDirection: 'column',
-    width: '300px',
-    padding: '2rem',
-    backgroundColor: '#000',
-    boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
-    borderRadius: '8px',
-  },
-  input: {
-    marginBottom: '1rem',
-    padding: '0.8rem',
-    fontSize: '1rem',
-    border: '1px solid #ccc',
-    borderRadius: '4px',
-    color: '#000'
-  },
-  button: {
-    padding: '0.8rem',
-    fontSize: '1rem',
-    color: '#fff',
-    backgroundColor: '#0070f3',
-    border: 'none',
-    borderRadius: '4px',
-    cursor: 'pointer',
-  },
-  error: {
-    color: 'red',
-    marginBottom: '1rem',
-  },
-};
+

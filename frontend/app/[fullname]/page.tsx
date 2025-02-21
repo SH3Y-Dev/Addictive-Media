@@ -64,7 +64,7 @@ const UserVideosPage = () => {
         <h2>{`${profile.firstName}'s Videos`}</h2>
         {videos.length > 0 ? (
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-            {videos.map((video, index) => (
+            {videos.map((video:any, index) => (
               <div
                 key={index}
                 style={{

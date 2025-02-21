@@ -91,7 +91,7 @@ export default function Dashboard() {
         fetchProfile();
       }
       handleCloseModal();
-    } catch (err) {
+    } catch (err:any) {
       console.error('Error updating profile:', err);
       setError(err.response?.data?.message || 'An unexpected error occurred.');
     }
