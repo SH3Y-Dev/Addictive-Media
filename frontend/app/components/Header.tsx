@@ -9,7 +9,7 @@ const Header = () => {
   const pathname = usePathname();
 
   const handleLogout = () => {
-    Cookies.remove("authToken");
+    localStorage.removeItem("access_token");
 
     router.push("/login");
   };

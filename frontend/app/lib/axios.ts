@@ -13,10 +13,7 @@ axiosInstance.interceptors.request.use(
       return config;
     }
 
-    const token = document.cookie
-      .split('; ')
-      .find(row => row.startsWith('access_token='))
-      ?.split('=')[1];
+    const token = localStorage.getItem('access_token');
     console.log("Token ", token);
     
     if (token) {

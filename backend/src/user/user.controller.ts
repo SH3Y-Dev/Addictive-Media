@@ -24,7 +24,7 @@ export class UserController {
   constructor(
     private userService: UserService,
     private authService: AuthService,
-    private videoService: VideoService
+    private videoService: VideoService,
   ) {}
   @Post('create')
   async createUser(@Body() createUserDto: CreateUserDto) {
@@ -41,12 +41,7 @@ export class UserController {
 
     const { access_token } = await this.authService.login(user);
 
-    res.cookie('access_token', access_token, {
-      maxAge: 60 * 60 * 1000,
-      secure: true,
-      sameSite: 'none',
-    });
-    return res.json({ message: 'Login successful' });
+    return res.json({ access_token, message: 'Login successful' });
   }
 
   @UseGuards(AuthGuard('jwt'))

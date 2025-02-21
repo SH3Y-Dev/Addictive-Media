@@ -28,20 +28,25 @@ export default function Login() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
-        credentials: 'include'
       });
-
+    
       if (!response.ok) {
         const errorData = await response.json();
         setError(errorData.message || 'Login failed'); 
         return;
       }
-      console.log(document.cookie);
+    
+      const data = await response.json();
+      
+      localStorage.setItem('access_token', data.access_token);
+    
       router.push('/dashboard');
     } catch (err) {
       console.error('Error during login:', err);
       setError('An unexpected error occurred.');
     }
+    
+    
   };
 
   const styles = {
