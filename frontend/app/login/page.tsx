@@ -36,7 +36,7 @@ export default function Login() {
         setError(errorData.message || 'Login failed'); 
         return;
       }
-
+      console.log(document.cookie);
       router.push('/dashboard');
     } catch (err) {
       console.error('Error during login:', err);
