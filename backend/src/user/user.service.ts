@@ -38,13 +38,13 @@ export class UserService {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'shreyas.19.dev@gmail.com',
-        pass: 'khsi flji nrck fgoz',
+        user: process.env.SMPT_EMAIL,
+        pass: process.env.SMPT_PASSWORD,
       },
     });
 
     const mailOptions = {
-      from: 'shreyas.19.dev@gmail.com',
+      from: process.env.SMPT_EMAIL,
       to: email,
       subject: 'Your Account Password',
       text: `Hello ${firstName},\n\nYour account has been created. Your password is: ${generatedPassword}\n\nThank you!`,
