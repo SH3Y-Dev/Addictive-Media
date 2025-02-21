@@ -42,7 +42,6 @@ export class UserController {
     const { access_token } = await this.authService.login(user);
 
     res.cookie('access_token', access_token, {
-      secure: process.env.NODE_ENV === 'production',
       maxAge: 60 * 60 * 1000,
     });
 
