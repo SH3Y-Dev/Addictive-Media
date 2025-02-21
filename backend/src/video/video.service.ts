@@ -78,14 +78,12 @@ export class VideoService {
     if (!user) {
       throw new NotFoundException(`User with emailId ${email} not found`);
     }
-    console.log(user._id);
 
     const videos = await this.videoModel
       .find({ userId: user._id })
       .sort({ createdAt: -1 })
       .select('videoPath title description')
       .exec();
-    console.log(videos);
 
     const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
     return {

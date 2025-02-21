@@ -52,6 +52,7 @@ export class UserController {
   @UseGuards(AuthGuard('jwt'))
   @Get('profile')
   async getUserProfile(@Req() req) {
+    console.log('Authorization Header:', req.headers.authorization);
     const userId = req.user.userId;
     console.log(req.user.userId);
 
